@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Free Students Union</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-blue: #39478e;
+        --bg-light: #fafafa;
+        --text-dark: #1c1c21;
+        --text-secondary: #3d404a;
+        --border-light: #e5e8eb;
+        --card-bg: #edf0f2;
+      }
+      * {
+        font-family:
+          "Work Sans",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+      }
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+      }
+      .navbar {
+        background: white !important;
+        border-bottom: 1px solid var(--border-light);
+        padding: 12px 40px;
+      }
+      .logo-img {
+        width: 96px;
+        height: 96px;
+      }
+      .brand-text h5 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+      .nav-link {
+        font-size: 14px;
+        color: var(--text-dark) !important;
+        padding: 0 18px !important;
+      }
+      .nav-link.active {
+        color: var(--primary-blue) !important;
+        font-weight: 600;
+      }
+      .btn-custom {
+        height: 40px;
+        padding: 0 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        min-width: 84px;
+      }
+      .btn-primary {
+        background-color: var(--primary-blue);
+        border: none;
+        color: var(--bg-light);
+      }
+      .btn-secondary {
+        background-color: var(--card-bg);
+        border: none;
+        color: var(--text-dark);
+      }
+      .content {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+      .page-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .contact-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        margin-bottom: 25px;
+        height: 100%;
+      }
+      .contact-header {
+        text-align: center;
+        margin-bottom: 25px;
+      }
+      .contact-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 15px;
+        font-size: 24px;
+        color: white;
+      }
+      .contact-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+      }
+      .contact-subtitle {
+        font-size: 14px;
+        color: var(--text-secondary);
+      }
+      .contact-info {
+        list-style: none;
+        padding: 0;
+      }
+      .contact-info li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        font-size: 14px;
+      }
+      .contact-info li:last-child {
+        margin-bottom: 0;
+      }
+      .contact-info-icon {
+        width: 20px;
+        margin-right: 12px;
+        color: var(--primary-blue);
+        text-align: center;
+      }
+      .contact-form {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+      }
+      .form-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-label {
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+        display: block;
+      }
+      .form-control {
+        border: 1px solid var(--border-light);
+        border-radius: 6px;
+        padding: 12px 15px;
+        font-size: 14px;
+        transition: border-color 0.2s ease;
+      }
+      .form-control:focus {
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 2px rgba(57, 71, 142, 0.1);
+        outline: none;
+      }
+      .submit-btn {
+        background: var(--primary-blue);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 6px;
+        font-weight: 600;
+        width: 100%;
+        transition: background 0.2s ease;
+      }
+      .submit-btn:hover {
+        background: #2d3a7a;
+      }
+      .map-container {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-top: 30px;
+        text-align: center;
+      }
+      .map-placeholder {
+        background: var(--card-bg);
+        height: 300px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        font-size: 16px;
+        margin-bottom: 15px;
+      }
+      .emergency-contact {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      .emergency-title {
+        color: #856404;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+      .emergency-info {
+        color: #856404;
+        font-size: 14px;
+        margin-bottom: 0;
+      }
+      .social-links {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .social-link {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: var(--primary-blue);
+        color: white;
+        border-radius: 50%;
+        text-decoration: none;
+        margin: 0 8px;
+        line-height: 40px;
+        transition: background 0.2s ease;
+      }
+      .social-link:hover {
+        background: #2d3a7a;
+        color: white;
+      }
+         /* Footer */
+      .footer {
+        background: var(--border-light);
+        padding: 56px 72px 10px;
+        margin-top: 50px;
+      }
+
+      .footer-logo {
+        height: 61px;
+        width: auto;
+      }
+
+      .footer-links a {
+        font-size: 14px;
+        color: #52525b;
+        text-decoration: none;
+        margin-right: 24px;
+      }
+
+      .social-links a {
+        color: #52525b;
+        margin-right: 12px;
+        font-size: 20px;
+      }
+
+         @media (max-width: 768px) {
+        .navbar {
+          padding: 12px 20px;
+        }
+        .footer {
+          padding: 30px 20px;
+          text-align: center;
+        }
+        .footer-content {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="navbar-brand d-flex align-items-center">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/407bec6843591a06512875dfcab6f27d7f6ff106"
+            alt="FSU Logo"
+            class="logo-img me-3"
+          />
+          <div class="brand-text">
+            <h5 class="mb-0">
+              FREE STUDENTS UNION<br />FAR WESTERN UNIVERSITY
+            </h5>
+          </div>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav me-4">
+            <li class="nav-item">
+              <a class="nav-link" href="fsu-home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="notes.html">Notes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="authorities.html">Authorities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="programs.html">Programs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary btn-custom">Login</button>
+            <button class="btn btn-secondary btn-custom">Calendar</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content">
+      <h1 class="page-title">Contact Us</h1>
+
+      <!-- Emergency Contact -->
+      <div class="emergency-contact">
+        <h4 class="emergency-title">🚨 Emergency Contact</h4>
+        <p class="emergency-info">
+          For urgent matters or emergencies, contact:
+          <strong>+977-91-123456</strong> (24/7 Helpline) or email:
+          <strong>emergency@fsu.edu.np</strong>
+        </p>
+      </div>
+
+      <div class="row">
+        <!-- FSU Office Contact -->
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-card">
+            <div class="contact-header">
+              <div class="contact-icon">🏢</div>
+              <h3 class="contact-title">FSU Main Office</h3>
+              <p class="contact-subtitle">Student Union Headquarters</p>
+            </div>
+            <ul class="contact-info">
+              <li>
+                <span class="contact-info-icon">📍</span>
+                Student Center Building, Room 201<br />
+                Far Western University Campus
+              </li>
+              <li>
+                <span class="contact-info-icon">📧</span>
+                info@fsu.edu.np
+              </li>
+              <li>
+                <span class="contact-info-icon">📱</span>
+                +977-91-524687
+              </li>
+              <li>
+                <span class="contact-info-icon">🕒</span>
+                Monday - Friday: 9:00 AM - 5:00 PM<br />
+                Saturday: 10:00 AM - 3:00 PM
+              </li>
+            </ul>
+            <div class="social-links">
+              <a href="#" class="social-link" title="Facebook">f</a>
+              <a href="#" class="social-link" title="Twitter">t</a>
+              <a href="#" class="social-link" title="Instagram">i</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic Support -->
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-card">
+            <div class="contact-header">
+              <div class="contact-icon">📚</div>
+              <h3 class="contact-title">Academic Support</h3>
+              <p class="contact-subtitle">Student Academic Services</p>
+            </div>
+            <ul class="contact-info">
+              <li>
+                <span class="contact-info-icon">📍</span>
+                Academic Block, Room 105<br />
+                Near Library
+              </li>
+              <li>
+                <span class="contact-info-icon">📧</span>
+                academic@fsu.edu.np
+              </li>
+              <li>
+                <span class="contact-info-icon">📱</span>
+                +977-91-524688
+              </li>
+              <li>
+                <span class="contact-info-icon">🕒</span>
+                Monday - Friday: 8:00 AM - 6:00 PM<br />
+                Saturday: 9:00 AM - 2:00 PM
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Student Activities -->
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-card">
+            <div class="contact-header">
+              <div class="contact-icon">🎯</div>
+              <h3 class="contact-title">Student Activities</h3>
+              <p class="contact-subtitle">Programs & Events Coordination</p>
+            </div>
+            <ul class="contact-info">
+              <li>
+                <span class="contact-info-icon">📍</span>
+                Recreation Center, Room 303<br />
+                Near Sports Complex
+              </li>
+              <li>
+                <span class="contact-info-icon">📧</span>
+                activities@fsu.edu.np
+              </li>
+              <li>
+                <span class="contact-info-icon">📱</span>
+                +977-91-524689
+              </li>
+              <li>
+                <span class="contact-info-icon">🕒</span>
+                Monday - Friday: 10:00 AM - 4:00 PM<br />
+                Event days: Extended hours
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <!-- University Administration -->
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-card">
+            <div class="contact-header">
+              <div class="contact-icon">🎓</div>
+              <h3 class="contact-title">University Admin</h3>
+              <p class="contact-subtitle">Main University Office</p>
+            </div>
+            <ul class="contact-info">
+              <li>
+                <span class="contact-info-icon">📍</span>
+                Administration Building<br />
+                Far Western University
+              </li>
+              <li>
+                <span class="contact-info-icon">📧</span>
+                admin@fwu.edu.np
+              </li>
+              <li>
+                <span class="contact-info-icon">📱</span>
+                +977-91-520000
+              </li>
+              <li>
+                <span class="contact-info-icon">🌐</span>
+                www.fwu.edu.np
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Registrar Office -->
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-card">
+            <div class="contact-header">
+              <div class="contact-icon">📋</div>
+              <h3 class="contact-title">Registrar Office</h3>
+              <p class="contact-subtitle">Academic Records & Registration</p>
+            </div>
+            <ul class="contact-info">
+              <li>
+                <span class="contact-info-icon">📍</span>
+                Academic Block, Ground Floor<br />
+                Registration Counter
+              </li>
+              <li>
+                <span class="contact-info-icon">📧</span>
+                registrar@fwu.edu.np
+              </li>
+              <li>
+                <span class="contact-info-icon">📱</span>
+                +977-91-520001
+              </li>
+              <li>
+                <span class="contact-info-icon">🕒</span>
+                Sunday - Thursday: 10:00 AM - 4:00 PM
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Counseling Services -->
+        <div class="col-lg-4 col-md-6">
+          <div class="contact-card">
+            <div class="contact-header">
+              <div class="contact-icon">💬</div>
+              <h3 class="contact-title">Counseling Services</h3>
+              <p class="contact-subtitle">Student Mental Health Support</p>
+            </div>
+            <ul class="contact-info">
+              <li>
+                <span class="contact-info-icon">📍</span>
+                Health Center, 2nd Floor<br />
+                Counseling Room 201
+              </li>
+              <li>
+                <span class="contact-info-icon">📧</span>
+                counseling@fsu.edu.np
+              </li>
+              <li>
+                <span class="contact-info-icon">📱</span>
+                +977-91-524690
+              </li>
+              <li>
+                <span class="contact-info-icon">🕒</span>
+                Monday - Friday: 9:00 AM - 5:00 PM<br />
+                Appointments recommended
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="row mt-5">
+        <div class="col-lg-8">
+          <div class="contact-form">
+            <h3 class="form-title">Send us a Message</h3>
+            <form id="contactForm">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Full Name *</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fullName"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Email Address *</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-label">Student ID (if applicable)</label>
+                    <input type="text" class="form-control" id="studentId" />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Department/Faculty</label>
+                <select class="form-control" id="department">
+                  <option value="">Select Department</option>
+                  <option value="computer_science">Computer Science</option>
+                  <option value="mathematics">Mathematics</option>
+                  <option value="physics">Physics</option>
+                  <option value="chemistry">Chemistry</option>
+                  <option value="english">English</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Subject *</label>
+                <input type="text" class="form-control" id="subject" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Message *</label>
+                <textarea
+                  class="form-control"
+                  id="message"
+                  rows="5"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-4">
+          <div class="contact-card">
+            <h4 style="color: var(--primary-blue); margin-bottom: 20px">
+              Quick Links
+            </h4>
+            <ul style="list-style: none; padding: 0">
+              <li style="margin-bottom: 10px">
+                <a
+                  href="syllabus.html"
+                  style="color: var(--text-dark); text-decoration: none"
+                  >📖 Academic Syllabus</a
+                >
+              </li>
+              <li style="margin-bottom: 10px">
+                <a
+                  href="notes.html"
+                  style="color: var(--text-dark); text-decoration: none"
+                  >📝 Study Notes</a
+                >
+              </li>
+              <li style="margin-bottom: 10px">
+                <a
+                  href="programs.html"
+                  style="color: var(--text-dark); text-decoration: none"
+                  >🎯 Student Programs</a
+                >
+              </li>
+              <li style="margin-bottom: 10px">
+                <a
+                  href="authorities.html"
+                  style="color: var(--text-dark); text-decoration: none"
+                  >👥 University Authorities</a
+                >
+              </li>
+              <li style="margin-bottom: 10px">
+                <a
+                  href="about.html"
+                  style="color: var(--text-dark); text-decoration: none"
+                  >ℹ️ About FSU</a
+                >
+              </li>
+            </ul>
+
+            <h5 style="color: var(--primary-blue); margin: 25px 0 15px">
+              Office Hours
+            </h5>
+            <p
+              style="
+                font-size: 14px;
+                color: var(--text-secondary);
+                margin-bottom: 8px;
+              "
+            >
+              <strong>Regular Hours:</strong><br />
+              Monday - Friday: 9:00 AM - 5:00 PM<br />
+              Saturday: 10:00 AM - 3:00 PM
+            </p>
+            <p style="font-size: 14px; color: var(--text-secondary)">
+              <strong>Holiday Hours:</strong><br />
+              Check our notices for special timings during festivals and
+              holidays.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Section -->
+      <div class="map-container">
+        <h3 style="color: var(--text-dark); margin-bottom: 20px">
+          📍 Find Us on Campus
+        </h3>
+        <div class="map-placeholder">
+          <div>
+            <p>🗺️ Interactive Campus Map</p>
+            <p style="font-size: 14px; color: var(--text-secondary)">
+              Located in the Student Center Building<br />
+              Far Western University Campus<br />
+              Mahendranagar, Kanchanpur, Nepal
+            </p>
+          </div>
+        </div>
+        <p style="font-size: 14px; color: var(--text-secondary)">
+          <strong>Directions:</strong> Enter through the main university gate,
+          the Student Center is the second building on your left. FSU office is
+          on the 2nd floor, Room 201.
+        </p>
+      </div>
+    </div>
+       <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c175fab701dac30467b50bcd8e90325fe6f2203d"
+              alt="University Logo"
+              class="footer-logo"
+            />
+          </div>
+          <div class="col-md-6">
+            <div
+              class="d-flex justify-content-end align-items-center footer-content"
+            >
+              <div class="footer-links">
+                <a href="about.html">About us</a>
+                <a href="#contact">Contact</a>
+                <a href="#privacy">Privacy policy</a>
+                <a href="#sitemap">Sitemap</a>
+                
+              </div>
+              <div class="social-links">
+                <a href="#" title="Twitter"><img src="../assets/images/icons8-twitter-bird-48.svg" /></a>
+                <a href="#" title="Facebook"><img src="../assets/images/icons8-facebook.svg" /></a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form values
+          const formData = {
+            name: document.getElementById("fullName").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            studentId: document.getElementById("studentId").value,
+            department: document.getElementById("department").value,
+            subject: document.getElementById("subject").value,
+            message: document.getElementById("message").value,
+          };
+
+          // Simple validation
+          if (
+            !formData.name ||
+            !formData.email ||
+            !formData.subject ||
+            !formData.message
+          ) {
+            alert("Please fill in all required fields.");
+            return;
+          }
+
+          // Simulate form submission
+          alert(
+            "Thank you for your message! We will get back to you within 24 hours.",
+          );
+
+          // Reset form
+          this.reset();
+        });
+    </script>
+  </body>
+</html>

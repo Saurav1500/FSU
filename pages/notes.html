@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes - Free Students Union</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-blue: #39478e;
+        --bg-light: #fafafa;
+        --text-dark: #1c1c21;
+        --text-secondary: #3d404a;
+        --border-light: #e5e8eb;
+        --card-bg: #edf0f2;
+      }
+      * {
+        font-family:
+          "Work Sans",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+      }
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+      }
+      .navbar {
+        background: white !important;
+        border-bottom: 1px solid var(--border-light);
+        padding: 12px 40px;
+      }
+      .logo-img {
+        width: 96px;
+        height: 96px;
+      }
+      .brand-text h5 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+      .nav-link {
+        font-size: 14px;
+        color: var(--text-dark) !important;
+        padding: 0 18px !important;
+      }
+      .nav-link.active {
+        color: var(--primary-blue) !important;
+        font-weight: 600;
+      }
+      .btn-custom {
+        height: 40px;
+        padding: 0 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        min-width: 84px;
+      }
+      .btn-primary {
+        background-color: var(--primary-blue);
+        border: none;
+        color: var(--bg-light);
+      }
+      .btn-secondary {
+        background-color: var(--card-bg);
+        border: none;
+        color: var(--text-dark);
+      }
+      .content {
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+      .page-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .notes-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        padding: 20px;
+        transition: transform 0.2s ease;
+      }
+      .notes-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      .subject-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--primary-blue);
+        margin-bottom: 15px;
+      }
+      .note-item {
+        border: 1px solid var(--border-light);
+        border-radius: 6px;
+        padding: 15px;
+        margin-bottom: 10px;
+        background: var(--bg-light);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .note-title {
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 5px;
+      }
+      .note-description {
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin-bottom: 0;
+      }
+      .download-btn {
+        background: var(--primary-blue);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 12px;
+        text-decoration: none;
+        transition: background 0.2s ease;
+      }
+      .download-btn:hover {
+        background: #2d3a7a;
+        color: white;
+      }
+      .search-box {
+        background: white;
+        border: 1px solid var(--border-light);
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin-bottom: 30px;
+        font-size: 14px;
+      }
+      .filter-tabs {
+        margin-bottom: 20px;
+      }
+      .filter-tab {
+        background: var(--card-bg);
+        border: 1px solid var(--border-light);
+        color: var(--text-dark);
+        padding: 8px 16px;
+        margin-right: 10px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+      .filter-tab.active {
+        background: var(--primary-blue);
+        color: white;
+        border-color: var(--primary-blue);
+      }
+         /* Footer */
+      .footer {
+        background: var(--border-light);
+        padding: 56px 72px 10px;
+        margin-top: 50px;
+      }
+
+      .footer-logo {
+        height: 61px;
+        width: auto;
+      }
+
+      .footer-links a {
+        font-size: 14px;
+        color: #52525b;
+        text-decoration: none;
+        margin-right: 24px;
+      }
+
+      .social-links a {
+        color: #52525b;
+        margin-right: 12px;
+        font-size: 20px;
+      }
+
+         @media (max-width: 768px) {
+        .navbar {
+          padding: 12px 20px;
+        }
+        .footer {
+          padding: 30px 20px;
+          text-align: center;
+        }
+        .footer-content {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="navbar-brand d-flex align-items-center">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/407bec6843591a06512875dfcab6f27d7f6ff106"
+            alt="FSU Logo"
+            class="logo-img me-3"
+          />
+          <div class="brand-text">
+            <h5 class="mb-0">
+              FREE STUDENTS UNION<br />FAR WESTERN UNIVERSITY
+            </h5>
+          </div>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav me-4">
+            <li class="nav-item">
+              <a class="nav-link" href="fsu-home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="notes.html">Notes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="authorities.html">Authorities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="programs.html">Programs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary btn-custom">Login</button>
+            <button class="btn btn-secondary btn-custom">Calendar</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content">
+      <h1 class="page-title">Study Notes & Resources</h1>
+
+      <input
+        type="text"
+        class="form-control search-box"
+        placeholder="Search notes by subject, topic, or keyword..."
+        id="searchNotes"
+      />
+
+      <div class="filter-tabs">
+        <button class="btn filter-tab active" onclick="filterNotes('all')">
+          All Subjects
+        </button>
+        <button class="btn filter-tab" onclick="filterNotes('mathematics')">
+          Mathematics
+        </button>
+        <button class="btn filter-tab" onclick="filterNotes('physics')">
+          Physics
+        </button>
+        <button class="btn filter-tab" onclick="filterNotes('chemistry')">
+          Chemistry
+        </button>
+        <button class="btn filter-tab" onclick="filterNotes('computer')">
+          Computer Science
+        </button>
+        <button class="btn filter-tab" onclick="filterNotes('english')">
+          English
+        </button>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="notes-card" data-subject="mathematics">
+            <h3 class="subject-title">Mathematics</h3>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Calculus - Differentiation</div>
+                <div class="note-description">
+                  Complete notes on derivatives, limits, and applications
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Linear Algebra</div>
+                <div class="note-description">
+                  Matrices, vectors, and system of equations
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Statistics & Probability</div>
+                <div class="note-description">
+                  Probability distributions and statistical analysis
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+          </div>
+
+          <div class="notes-card" data-subject="chemistry">
+            <h3 class="subject-title">Chemistry</h3>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Organic Chemistry</div>
+                <div class="note-description">
+                  Reactions, mechanisms, and molecular structures
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Physical Chemistry</div>
+                <div class="note-description">
+                  Thermodynamics, kinetics, and quantum mechanics
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+          </div>
+
+          <div class="notes-card" data-subject="english">
+            <h3 class="subject-title">English</h3>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Academic Writing</div>
+                <div class="note-description">
+                  Essay structure, citation, and research methods
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Literature Analysis</div>
+                <div class="note-description">
+                  Critical thinking and literary interpretation
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="notes-card" data-subject="physics">
+            <h3 class="subject-title">Physics</h3>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Classical Mechanics</div>
+                <div class="note-description">
+                  Newton's laws, motion, and energy principles
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Electromagnetic Theory</div>
+                <div class="note-description">
+                  Electric fields, magnetic fields, and wave theory
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Quantum Physics</div>
+                <div class="note-description">
+                  Wave-particle duality and quantum mechanics basics
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+          </div>
+
+          <div class="notes-card" data-subject="computer">
+            <h3 class="subject-title">Computer Science</h3>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Data Structures & Algorithms</div>
+                <div class="note-description">
+                  Arrays, linked lists, trees, and sorting algorithms
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Programming Fundamentals</div>
+                <div class="note-description">
+                  Basic programming concepts and problem solving
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+
+            <div class="note-item">
+              <div>
+                <div class="note-title">Database Management</div>
+                <div class="note-description">
+                  SQL, database design, and normalization
+                </div>
+              </div>
+              <a href="#" class="download-btn">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert-info mt-4">
+        <strong>Note:</strong> These study materials are compiled by students
+        and faculty. Always verify information with your course instructors and
+        official textbooks.
+      </div>
+    </div>
+       <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c175fab701dac30467b50bcd8e90325fe6f2203d"
+              alt="University Logo"
+              class="footer-logo"
+            />
+          </div>
+          <div class="col-md-6">
+            <div
+              class="d-flex justify-content-end align-items-center footer-content"
+            >
+              <div class="footer-links">
+                <a href="about.html">About us</a>
+                <a href="#contact">Contact</a>
+                <a href="#privacy">Privacy policy</a>
+                <a href="#sitemap">Sitemap</a>
+                
+              </div>
+              <div class="social-links">
+                <a href="#" title="Twitter"><img src="../assets/images/icons8-twitter-bird-48.svg" /></a>
+                <a href="#" title="Facebook"><img src="../assets/images/icons8-facebook.svg" /></a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function filterNotes(subject) {
+        const cards = document.querySelectorAll(".notes-card");
+        const tabs = document.querySelectorAll(".filter-tab");
+
+        // Update active tab
+        tabs.forEach((tab) => tab.classList.remove("active"));
+        event.target.classList.add("active");
+
+        // Filter cards
+        cards.forEach((card) => {
+          if (
+            subject === "all" ||
+            card.getAttribute("data-subject") === subject
+          ) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      // Search functionality
+      document
+        .getElementById("searchNotes")
+        .addEventListener("input", function (e) {
+          const searchTerm = e.target.value.toLowerCase();
+          const cards = document.querySelectorAll(".notes-card");
+
+          cards.forEach((card) => {
+            const title = card
+              .querySelector(".subject-title")
+              .textContent.toLowerCase();
+            const noteItems = card.querySelectorAll(".note-item");
+            let hasMatch = title.includes(searchTerm);
+
+            noteItems.forEach((item) => {
+              const noteTitle = item
+                .querySelector(".note-title")
+                .textContent.toLowerCase();
+              const noteDesc = item
+                .querySelector(".note-description")
+                .textContent.toLowerCase();
+              if (
+                noteTitle.includes(searchTerm) ||
+                noteDesc.includes(searchTerm)
+              ) {
+                hasMatch = true;
+              }
+            });
+
+            card.style.display = hasMatch ? "block" : "none";
+          });
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authorities - Free Students Union</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-blue: #39478e;
+        --bg-light: #fafafa;
+        --text-dark: #1c1c21;
+        --text-secondary: #3d404a;
+        --border-light: #e5e8eb;
+        --card-bg: #edf0f2;
+      }
+      * {
+        font-family:
+          "Work Sans",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+      }
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+      }
+      .navbar {
+        background: white !important;
+        border-bottom: 1px solid var(--border-light);
+        padding: 12px 40px;
+      }
+      .logo-img {
+        width: 96px;
+        height: 96px;
+      }
+      .brand-text h5 {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+      .nav-link {
+        font-size: 14px;
+        color: var(--text-dark) !important;
+        padding: 0 18px !important;
+      }
+      .nav-link.active {
+        color: var(--primary-blue) !important;
+        font-weight: 600;
+      }
+      .btn-custom {
+        height: 40px;
+        padding: 0 16px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        min-width: 84px;
+      }
+      .btn-primary {
+        background-color: var(--primary-blue);
+        border: none;
+        color: var(--bg-light);
+      }
+      .btn-secondary {
+        background-color: var(--card-bg);
+        border: none;
+        color: var(--text-dark);
+      }
+      .content {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+      .page-title {
+        font-size: 32px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 30px;
+        text-align: center;
+      }
+      .section-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary-blue);
+        margin-bottom: 25px;
+        border-bottom: 2px solid var(--border-light);
+        padding-bottom: 10px;
+      }
+      .authority-card {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        margin-bottom: 25px;
+        transition: transform 0.2s ease;
+      }
+      .authority-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      .authority-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .authority-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 20px;
+        border: 3px solid var(--border-light);
+      }
+      .authority-name {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 5px;
+      }
+      .authority-position {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--primary-blue);
+        margin-bottom: 5px;
+      }
+      .authority-department {
+        font-size: 14px;
+        color: var(--text-secondary);
+        margin-bottom: 0;
+      }
+      .authority-details {
+        margin-left: 100px;
+      }
+      .contact-info {
+        background: var(--bg-light);
+        border-radius: 6px;
+        padding: 15px;
+        margin-top: 15px;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .contact-item:last-child {
+        margin-bottom: 0;
+      }
+      .contact-icon {
+        width: 20px;
+        margin-right: 10px;
+        color: var(--primary-blue);
+      }
+      .bio-text {
+        font-size: 14px;
+        line-height: 1.6;
+        color: var(--text-secondary);
+        margin-top: 15px;
+      }
+      .office-hours {
+        background: #e8f4f8;
+        border-left: 4px solid var(--primary-blue);
+        padding: 12px 15px;
+        margin-top: 15px;
+        border-radius: 0 6px 6px 0;
+      }
+      .office-hours-title {
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .office-hours-time {
+        font-size: 13px;
+        color: var(--text-secondary);
+      }
+
+      @media (max-width: 768px) {
+        .authority-header {
+          flex-direction: column;
+          text-align: center;
+        }
+        .authority-avatar {
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+        .authority-details {
+          margin-left: 0;
+        }
+      }
+         /* Footer */
+      .footer {
+        background: var(--border-light);
+        padding: 56px 72px 10px;
+        margin-top: 50px;
+      }
+
+      .footer-logo {
+        height: 61px;
+        width: auto;
+      }
+
+      .footer-links a {
+        font-size: 14px;
+        color: #52525b;
+        text-decoration: none;
+        margin-right: 24px;
+      }
+
+      .social-links a {
+        color: #52525b;
+        margin-right: 12px;
+        font-size: 20px;
+      }
+
+         @media (max-width: 768px) {
+        .navbar {
+          padding: 12px 20px;
+        }
+        .footer {
+          padding: 30px 20px;
+          text-align: center;
+        }
+        .footer-content {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="navbar-brand d-flex align-items-center">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/407bec6843591a06512875dfcab6f27d7f6ff106"
+            alt="FSU Logo"
+            class="logo-img me-3"
+          />
+          <div class="brand-text">
+            <h5 class="mb-0">
+              FREE STUDENTS UNION<br />FAR WESTERN UNIVERSITY
+            </h5>
+          </div>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav me-4">
+            <li class="nav-item">
+              <a class="nav-link" href="fsu-home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="syllabus.html">Syllabus</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="notes.html">Notes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="authorities.html">Authorities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="programs.html">Programs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+          <div class="d-flex gap-2">
+            <button class="btn btn-primary btn-custom">Login</button>
+            <button class="btn btn-secondary btn-custom">Calendar</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="content">
+      <h1 class="page-title">University Authorities</h1>
+
+      <!-- FSU Executive Committee -->
+      <section class="mb-5">
+        <h2 class="section-title">Free Students Union Executive Committee</h2>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="authority-card">
+              <div class="authority-header">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc79f375b2453c4329ade03f7634df1360b5d0b5"
+                  alt="FSU President"
+                  class="authority-avatar"
+                />
+                <div>
+                  <h3 class="authority-name">Rajesh Kumar Sharma</h3>
+                  <div class="authority-position">President</div>
+                  <div class="authority-department">Free Students Union</div>
+                </div>
+              </div>
+              <div class="authority-details">
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    president@fsu.edu.np
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    +977-98xxxxxxxx
+                  </div>
+                </div>
+                <div class="office-hours">
+                  <div class="office-hours-title">Office Hours</div>
+                  <div class="office-hours-time">
+                    Monday - Friday: 9:00 AM - 5:00 PM
+                  </div>
+                </div>
+                <p class="bio-text">
+                  Leading the student body with dedication to academic
+                  excellence and student welfare. Focuses on bridging
+                  communication between students and administration.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="authority-card">
+              <div class="authority-header">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc79f375b2453c4329ade03f7634df1360b5d0b5"
+                  alt="FSU Vice President"
+                  class="authority-avatar"
+                />
+                <div>
+                  <h3 class="authority-name">Priya Thapa</h3>
+                  <div class="authority-position">Vice President</div>
+                  <div class="authority-department">Free Students Union</div>
+                </div>
+              </div>
+              <div class="authority-details">
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    vicepresident@fsu.edu.np
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    +977-98xxxxxxxx
+                  </div>
+                </div>
+                <div class="office-hours">
+                  <div class="office-hours-title">Office Hours</div>
+                  <div class="office-hours-time">
+                    Monday - Friday: 10:00 AM - 4:00 PM
+                  </div>
+                </div>
+                <p class="bio-text">
+                  Committed to promoting student rights and organizing academic
+                  and cultural activities. Specializes in student grievance
+                  resolution and policy advocacy.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="authority-card">
+              <div class="authority-header">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc79f375b2453c4329ade03f7634df1360b5d0b5"
+                  alt="FSU Secretary"
+                  class="authority-avatar"
+                />
+                <div>
+                  <h3 class="authority-name">Amit Bohara</h3>
+                  <div class="authority-position">General Secretary</div>
+                  <div class="authority-department">Free Students Union</div>
+                </div>
+              </div>
+              <div class="authority-details">
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    secretary@fsu.edu.np
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    +977-98xxxxxxxx
+                  </div>
+                </div>
+                <div class="office-hours">
+                  <div class="office-hours-title">Office Hours</div>
+                  <div class="office-hours-time">
+                    Monday - Friday: 8:00 AM - 6:00 PM
+                  </div>
+                </div>
+                <p class="bio-text">
+                  Responsible for maintaining records, coordinating meetings,
+                  and managing administrative affairs of the student union.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="authority-card">
+              <div class="authority-header">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc79f375b2453c4329ade03f7634df1360b5d0b5"
+                  alt="FSU Treasurer"
+                  class="authority-avatar"
+                />
+                <div>
+                  <h3 class="authority-name">Sunita Joshi</h3>
+                  <div class="authority-position">Treasurer</div>
+                  <div class="authority-department">Free Students Union</div>
+                </div>
+              </div>
+              <div class="authority-details">
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    treasurer@fsu.edu.np
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    +977-98xxxxxxxx
+                  </div>
+                </div>
+                <div class="office-hours">
+                  <div class="office-hours-title">Office Hours</div>
+                  <div class="office-hours-time">
+                    Monday - Friday: 9:00 AM - 3:00 PM
+                  </div>
+                </div>
+                <p class="bio-text">
+                  Manages financial affairs, budgeting, and ensures transparent
+                  use of student union funds for various activities and welfare
+                  programs.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- University Administration -->
+      <section class="mb-5">
+        <h2 class="section-title">University Administration</h2>
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="authority-card">
+              <div class="authority-header">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc79f375b2453c4329ade03f7634df1360b5d0b5"
+                  alt="Vice Chancellor"
+                  class="authority-avatar"
+                />
+                <div>
+                  <h3 class="authority-name">Prof. Dr. Krishna Prasad Oli</h3>
+                  <div class="authority-position">Vice Chancellor</div>
+                  <div class="authority-department">Far Western University</div>
+                </div>
+              </div>
+              <div class="authority-details">
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    vc@fwu.edu.np
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    +977-91-xxxxxx
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">🏢</span>
+                    Administration Building, Room 201
+                  </div>
+                </div>
+                <div class="office-hours">
+                  <div class="office-hours-title">Office Hours</div>
+                  <div class="office-hours-time">By Appointment Only</div>
+                </div>
+                <p class="bio-text">
+                  Leading the university with over 20 years of experience in
+                  higher education. Committed to academic excellence and
+                  research innovation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="authority-card">
+              <div class="authority-header">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc79f375b2453c4329ade03f7634df1360b5d0b5"
+                  alt="Registrar"
+                  class="authority-avatar"
+                />
+                <div>
+                  <h3 class="authority-name">Dr. Ramesh Chandra Pant</h3>
+                  <div class="authority-position">Registrar</div>
+                  <div class="authority-department">Academic Affairs</div>
+                </div>
+              </div>
+              <div class="authority-details">
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    registrar@fwu.edu.np
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    +977-91-xxxxxx
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">🏢</span>
+                    Academic Block, Room 105
+                  </div>
+                </div>
+                <div class="office-hours">
+                  <div class="office-hours-title">Office Hours</div>
+                  <div class="office-hours-time">
+                    Sunday - Thursday: 10:00 AM - 4:00 PM
+                  </div>
+                </div>
+                <p class="bio-text">
+                  Overseeing academic administration, student records, and
+                  examination processes. Ensuring smooth academic operations
+                  university-wide.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Department Heads -->
+      <section>
+        <h2 class="section-title">Department Heads</h2>
+
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="authority-card">
+              <div class="authority-header">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc79f375b2453c4329ade03f7634df1360b5d0b5"
+                  alt="CS Head"
+                  class="authority-avatar"
+                />
+                <div>
+                  <h3 class="authority-name">Dr. Suman Ghimire</h3>
+                  <div class="authority-position">Head of Department</div>
+                  <div class="authority-department">Computer Science</div>
+                </div>
+              </div>
+              <div class="authority-details">
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    cs.head@fwu.edu.np
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    +977-98xxxxxxxx
+                  </div>
+                </div>
+                <div class="office-hours">
+                  <div class="office-hours-title">Office Hours</div>
+                  <div class="office-hours-time">
+                    Mon, Wed, Fri: 2:00 PM - 4:00 PM
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="authority-card">
+              <div class="authority-header">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc79f375b2453c4329ade03f7634df1360b5d0b5"
+                  alt="Math Head"
+                  class="authority-avatar"
+                />
+                <div>
+                  <h3 class="authority-name">Prof. Laxmi Sharma</h3>
+                  <div class="authority-position">Head of Department</div>
+                  <div class="authority-department">Mathematics</div>
+                </div>
+              </div>
+              <div class="authority-details">
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    math.head@fwu.edu.np
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    +977-98xxxxxxxx
+                  </div>
+                </div>
+                <div class="office-hours">
+                  <div class="office-hours-title">Office Hours</div>
+                  <div class="office-hours-time">
+                    Tue, Thu: 1:00 PM - 3:00 PM
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="authority-card">
+              <div class="authority-header">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/fc79f375b2453c4329ade03f7634df1360b5d0b5"
+                  alt="Physics Head"
+                  class="authority-avatar"
+                />
+                <div>
+                  <h3 class="authority-name">Dr. Narayan Devkota</h3>
+                  <div class="authority-position">Head of Department</div>
+                  <div class="authority-department">Physics</div>
+                </div>
+              </div>
+              <div class="authority-details">
+                <div class="contact-info">
+                  <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    physics.head@fwu.edu.np
+                  </div>
+                  <div class="contact-item">
+                    <span class="contact-icon">📱</span>
+                    +977-98xxxxxxxx
+                  </div>
+                </div>
+                <div class="office-hours">
+                  <div class="office-hours-title">Office Hours</div>
+                  <div class="office-hours-time">
+                    Mon, Wed: 11:00 AM - 1:00 PM
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+       <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c175fab701dac30467b50bcd8e90325fe6f2203d"
+              alt="University Logo"
+              class="footer-logo"
+            />
+          </div>
+          <div class="col-md-6">
+            <div
+              class="d-flex justify-content-end align-items-center footer-content"
+            >
+              <div class="footer-links">
+                <a href="about.html">About us</a>
+                <a href="#contact">Contact</a>
+                <a href="#privacy">Privacy policy</a>
+                <a href="#sitemap">Sitemap</a>
+                
+              </div>
+              <div class="social-links">
+                <a href="#" title="Twitter"><img src="../assets/images/icons8-twitter-bird-48.svg" /></a>
+                <a href="#" title="Facebook"><img src="../assets/images/icons8-facebook.svg" /></a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
